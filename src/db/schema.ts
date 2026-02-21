@@ -10,4 +10,7 @@ export const todos = sqliteTable('todos', {
   createdAt: integer('created_at', { mode: 'timestamp' }).default(
     sql`(unixepoch())`,
   ),
+  updatedAt: integer('updated_at', { mode: 'timestamp' })
+    .default(sql`(unixepoch())`)
+    .$onUpdate(() => new Date()),
 })
